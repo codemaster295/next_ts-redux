@@ -1,0 +1,84 @@
+import axios from 'axios'
+import Router from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { registerUser } from '../store/actions/actionsMain'
+
+const RegisterForm = () => {
+  const [userName, setUserName] = useState(null)
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [repeatPassword, setRepeatPassword] = useState(null)
+  const dispatch = useDispatch()
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    if (password === repeatPassword) {
+
+      let data = {
+        email: email, password: password, username: userName
+      }
+      const userdata = await dispatch(registerUser(data))
+      console.log(userdata)
+      if (userdata.payload.success ===true) {
+        toast.success(userdata.payload.message, {
+          position: "bottom-left",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        })
+        Router.push("/")
+      }
+      else{
+
+        toast.error(userdata.payload.message, {
+          position: "bottom-left",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        })
+      }
+
+    }
+    else {
+      toast.error(`The passwords should be same `, {
+        position: "bottom-left",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+  }
+
+  return (
+    <div className="container mx-auto">
+      <form className="space-y-5 w-1/2 mx-auto mt-20 shadow-2xl p-5 border-t-2 border-purple-800 border-r-2 rounded-r-xl" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <label htmlFor="username">Enter the username</label>
+          <input onChange={(e) => { setUserName(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="text" name="username" id="username" />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="email">Enter the email</label>
+          <input onChange={(e) => { setEmail(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="text" name="email" id="email" />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="password">Enter the password</label>
+          <input onChange={(e) => { setPassword(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="password" name="password" id="password" />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="repassword">Repeat the password</label>
+          <input onChange={(e) => { setRepeatPassword(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="password" name="repassword" id="repassword" />
+        </div>
+        <button type="submit" className="bg-purple-500 px-8 py-3 rounded-xl text-white">Register</button>
+      </form>
+    </div>
+  )
+}
+
+export default RegisterForm
