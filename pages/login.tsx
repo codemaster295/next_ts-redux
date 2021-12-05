@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { NextPage } from 'next'
 import Navbar from '../components/Navbar'
+import LoginForm from '../components/LoginForm'
 const Login = () => {
   return (
 
@@ -12,7 +13,7 @@ const Login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      
+      <LoginForm />
     </div>
   )
 }

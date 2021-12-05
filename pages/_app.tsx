@@ -1,7 +1,7 @@
-import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
+import '../tailwind.css'
+import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
-
 import type { AppProps } from 'next/app'
 import { wrapper } from "../store/index"
 import React from 'react'

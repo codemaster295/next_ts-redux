@@ -58,24 +58,24 @@ const RegisterForm = () => {
 
   return (
     <div className="container mx-auto">
-      <form className="space-y-5 w-1/2 mx-auto mt-20 shadow-2xl p-5 border-t-2 border-purple-800 border-r-2 rounded-r-xl" onSubmit={handleSubmit}>
+      <form className="space-y-5 w-1/2 mx-auto mt-20 shadow-2xl p-5 text-blue-500" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <label htmlFor="username">Enter the username</label>
-          <input onChange={(e) => { setUserName(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="text" name="username" id="username" />
+          <input onChange={(e) => { setUserName(e.target.value) }} required className="w-full  outline-none px-3 py-4 rounded-2xl  text-blue-500 bg-gray-100" type="text" name="username" id="username" />
         </div>
         <div className="space-y-2">
           <label htmlFor="email">Enter the email</label>
-          <input onChange={(e) => { setEmail(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="text" name="email" id="email" />
+          <input onChange={(e) => { setEmail(e.target.value) }} required className="w-full  outline-none px-3 py-4 rounded-2xl  text-blue-500 bg-gray-100" type="text" name="email" id="email" />
         </div>
         <div className="space-y-2">
           <label htmlFor="password">Enter the password</label>
-          <input onChange={(e) => { setPassword(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="password" name="password" id="password" />
+          <input onChange={(e) => { setPassword(e.target.value) }} required className="w-full  outline-none px-3 py-4 rounded-2xl  text-blue-500 bg-gray-100" type="password" name="password" id="password" />
         </div>
         <div className="space-y-2">
           <label htmlFor="repassword">Repeat the password</label>
-          <input onChange={(e) => { setRepeatPassword(e.target.value) }} required className="w-full bg-purple-400 outline-none px-3 py-4 rounded-2xl text-white" type="password" name="repassword" id="repassword" />
+          <input onChange={(e) => { setRepeatPassword(e.target.value) }} required className="w-full  outline-none px-3 py-4 rounded-2xl  text-blue-500 bg-gray-100" type="password" name="repassword" id="repassword" />
         </div>
-        <button type="submit" className="bg-purple-500 px-8 py-3 rounded-xl text-white">Register</button>
+        <button type="submit" className="bg-gray-100 px-8 py-3 rounded-xl text-blue-500">Register</button>
       </form>
     </div>
   )

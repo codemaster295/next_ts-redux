@@ -26,3 +26,33 @@ export const registerUser = (data) => {
     
   }
 }
+export const loginUser = (data) => {
+  return async () => {
+    const registrationData = await axios.post(`${process.env.baseUrl}/api/v1/login`, data)
+    
+
+      return ({
+        type: "USER_LOGIN",
+        payload: registrationData.data
+      }
+      )
+    
+  }
+}
+export const getSearchData = (data)=>{
+  return async () => {
+    const token = localStorage.getItem('token')
+    const registrationData = await axios.post(`${process.env.baseUrl}/api/v1/searchdata`, data,{
+      headers:{
+        'Content-Type': 'application/json',
+        'x-access-token':token
+      }
+    })    
+      return ({
+        type: "GET_SEARCH_DATA",
+        payload:registrationData.data 
+      }
+      )
+    
+  }
+}

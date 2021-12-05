@@ -9,8 +9,10 @@ import authReducer from "./redcers/authReducer";
 
 
 import { createWrapper } from "next-redux-wrapper";
+import getDataReducer from "./redcers/getDataReducer";
 const rootReducer = combineReducers({
   authReducer: authReducer,
+  getDataReducer:getDataReducer
 });
 
 const initStore = (initialState = initState) => {

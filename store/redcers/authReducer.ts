@@ -1,5 +1,3 @@
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunkMiddleware from "redux-thunk";
 
 import {
   USER_DATA_UPDATE,
@@ -28,5 +26,6 @@ const authReducer = (state = initState, action: any) => {
     return state;
   }
 };
+
 
 export default authReducer;
