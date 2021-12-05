@@ -1,4 +1,5 @@
 import axios from "axios";
+import { loginTypes, registerUserTypes, searchTypes } from "../../types";
 
 export const USER_DATA_UPDATE = "USER_DATA_UPDATE";
 export const USER_FOLLOWING_ARTISTS_UPDATE = "USER_FOLLOWING_ARTISTS_UPDATE";
@@ -13,7 +14,9 @@ export const setUserAuthTOken = (payload: string) => {
     payload,
   };
 };
-export const registerUser = (data) => {
+
+
+export const registerUser = (data:registerUserTypes) => {
   return async () => {
     const registrationData = await axios.post(`${process.env.baseUrl}/api/v1/register`, data)
     
@@ -26,7 +29,7 @@ export const registerUser = (data) => {
     
   }
 }
-export const loginUser = (data) => {
+export const loginUser = (data:loginTypes) => {
   return async () => {
     const registrationData = await axios.post(`${process.env.baseUrl}/api/v1/login`, data)
     
@@ -39,7 +42,7 @@ export const loginUser = (data) => {
     
   }
 }
-export const getSearchData = (data)=>{
+export const getSearchData = (data:searchTypes)=>{
   return async () => {
     const token = localStorage.getItem('token')
     const registrationData = await axios.post(`${process.env.baseUrl}/api/v1/searchdata`, data,{
