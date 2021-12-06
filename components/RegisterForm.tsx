@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { registerUser } from '../store/actions/actionsMain'
+import { registerUserTypes } from '../types'
 
 const RegisterForm = () => {
   const [userName, setUserName] = useState(null)
@@ -15,12 +16,12 @@ const RegisterForm = () => {
     e.preventDefault()
     if (password === repeatPassword) {
 
-      let data = {
+      let data: registerUserTypes = {
         email: email, password: password, username: userName
       }
-      const userdata = await dispatch(registerUser(data))
+      const userdata: any = await dispatch(registerUser(data))
       console.log(userdata)
-      if (userdata.payload.success ===true) {
+      if (userdata.payload.success === true) {
         toast.success(userdata.payload.message, {
           position: "bottom-left",
           autoClose: 10000,
@@ -31,7 +32,7 @@ const RegisterForm = () => {
         })
         Router.push("/")
       }
-      else{
+      else {
 
         toast.error(userdata.payload.message, {
           position: "bottom-left",

@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { loginUser } from '../store/actions/actionsMain'
+import { loginUser, setUserAuthToken, setUserData } from '../store/actions/actionsMain'
 import Router from 'next/router'
 const LoginForm = () => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
-const dispatch = useDispatch()
-  const handleSubmit = async(e:any)=>{
+  const dispatch = useDispatch()
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
     let data = {
-      email , password
+      email, password
     }
-    const userData = await dispatch(loginUser(data))
-    if (userData.payload.success ===true) {
+    const userData: any = await dispatch(loginUser(data))
+    if (userData.payload.success === true) {
       toast.success(userData.payload.message, {
         position: "bottom-left",
         autoClose: 10000,
@@ -23,10 +23,12 @@ const dispatch = useDispatch()
         draggable: true,
       })
       Router.push("/")
-      localStorage.setItem('token' , userData.payload.token)
+      dispatch(setUserAuthToken(userData.payload.token))
+      // dispatch(setUserData({ token: userData.payload.token, data: userData.payload.UserData }))
+
     }
-    else{
-      toast.error(userData.payload.message, {    
+    else {
+      toast.error(userData.payload.message, {
         position: "bottom-left",
         autoClose: 10000,
         hideProgressBar: false,
