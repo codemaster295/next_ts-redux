@@ -6,7 +6,6 @@ import ImgCrop from "antd-img-crop";
 import { useDispatch } from "react-redux";
 import "antd/dist/antd.css";
 import { toast } from "react-toastify";
-import BlogContent from "./BlogContent";
 
 const BlogCreate: any = () => {
   const [blogTitle, setBlogTitle] = useState("");
@@ -112,7 +111,6 @@ const BlogCreate: any = () => {
             placeholder="Description"
           ></textarea>
         </div>
-        <BlogContent />
         <button className="button" type="submit">
           Submit
         </button>
