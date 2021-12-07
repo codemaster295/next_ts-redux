@@ -4,14 +4,14 @@ import BlogComponent from "./BlogComponent";
 import Content from "./Content";
 
 const Banner = (props) => {
-  console.log(props, "mo");
+  
   return (
     <div className="banner w-full">
       <div className="container mx-auto z-50  ">
         <div className="flex items-center justify-between">
           <div className="w-5/12 space-y-10">
             <h1 className="font-bold text-4xl text-gray-600">
-              Sample blog site in next js,typescript,redux and nodejs
+              What this NFT thing is all about
             </h1>
             <p className="font_Inter text-gray-500 font-semibold">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
@@ -33,17 +33,8 @@ const Banner = (props) => {
           </div>
         </div>
       </div>
-      {console.log(props.data)}
-      <div className="container mx-auto bg-white">
-        <div className="grid grid-cols-5 gap-10">
-          {props.data.map((data) => (
-            <BlogComponent data={data} />
-          ))}
-        </div>
-        {/* {props.data.map((data) => (
-        <Content data={data.data} />
-      ))} */}
-      </div>
+    
+      
     </div>
   );
 };

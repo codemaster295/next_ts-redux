@@ -15,6 +15,7 @@ import {
   setUserAuthToken,
   userDataRedux,
 } from "../store/actions/actionsMain";
+import BlogList from "../components/BlogList";
 // import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
@@ -25,6 +26,7 @@ const Home: NextPage = (props) => {
     let data = localStorage.getItem("data");
     // dispatch(setUserAuthToken({ token, ...JSON.parse(data) }))
     dispatch(getUserAuthToken([]));
+    // dispatch(getBlogData())
   }, []);
 
   return (
@@ -36,6 +38,7 @@ const Home: NextPage = (props) => {
       </Head>
       <Navbar />
       <Banner data={props.data} />
+      <BlogList />
       {/* <SearchBar /> */}
     </div>
   );

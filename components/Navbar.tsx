@@ -11,12 +11,12 @@ const Navbar = () => {
   }, [])
   const userDataRedux: any = useSelector((state: any) => state.authReducer)
   let { userauthtoken } = userDataRedux
-  console.log(userauthtoken, userDataRedux)
+  
   return (
     <div className="container mx-auto">
       <div className="flex justify-between p-4">
-        <span className="text-3xl tracking-widest font-bold">
-          <Link href="/">BLOG</Link>
+        <span className="text-3xl font-bold">
+          <Link href="/">it'sNFT</Link>
         </span>
         {!userauthtoken ? <ul className="flex items-center space-x-10">
           <li className="text-black"><Link href="/login">Login</Link></li>

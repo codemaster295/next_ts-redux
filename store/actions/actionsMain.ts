@@ -1,5 +1,8 @@
 import axios from "axios";
+import { client } from "../../prismic-config";
 import { loginTypes, registerUserTypes, searchTypes } from "../../types";
+import Prismic from "@prismicio/client";
+
 
 export const USER_DATA_UPDATE = "USER_DATA_UPDATE";
 export const USER_FOLLOWING_ARTISTS_UPDATE = "USER_FOLLOWING_ARTISTS_UPDATE";
@@ -90,5 +93,30 @@ export const getSearchData = (data: searchTypes) => {
       payload: registrationData.data
     }
     )
+  }
+}
+export const getBlogData = (dispatch)=>{
+  return async ()=>{
+    const blog:any = await client.query(
+      Prismic.Predicates.at("document.type", "blog")
+      )
+
+    dispatch({
+      type: "GET_BLOG_DATA",
+      payload: blog.results
+    })
+     
+  }
+}
+export const getBlogById = (id:string)=>{
+  return async ()=>{
+    // const blogDetail:any = await client.query(
+    //   Prismic.Predicates.at("document.type" , id)
+    // ) 
+    const blogDetail = await client.getByID(id)
+    return({
+      type: "GET_BLOG_BY_ID",
+      payload: blogDetail
+    })
   }
 }
