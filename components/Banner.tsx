@@ -1,7 +1,10 @@
 import Image from "next/image";
 import React from "react";
+import BlogComponent from "./BlogComponent";
+import Content from "./Content";
 
-const Banner = () => {
+const Banner = (props) => {
+  console.log(props, "mo");
   return (
     <div className="banner w-full">
       <div className="container mx-auto z-50  ">
@@ -29,6 +32,17 @@ const Banner = () => {
             />
           </div>
         </div>
+      </div>
+      {console.log(props.data)}
+      <div className="container mx-auto bg-white">
+        <div className="grid grid-cols-5 gap-10">
+          {props.data.map((data) => (
+            <BlogComponent data={data} />
+          ))}
+        </div>
+        {/* {props.data.map((data) => (
+        <Content data={data.data} />
+      ))} */}
       </div>
     </div>
   );
