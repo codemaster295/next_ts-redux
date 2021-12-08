@@ -95,28 +95,3 @@ export const getSearchData = (data: searchTypes) => {
     )
   }
 }
-export const getBlogData = (dispatch)=>{
-  return async ()=>{
-    const blog:any = await client.query(
-      Prismic.Predicates.at("document.type", "blog")
-      )
-
-    dispatch({
-      type: "GET_BLOG_DATA",
-      payload: blog.results
-    })
-     
-  }
-}
-export const getBlogById = (id:string)=>{
-  return async ()=>{
-    // const blogDetail:any = await client.query(
-    //   Prismic.Predicates.at("document.type" , id)
-    // ) 
-    const blogDetail = await client.getByID(id)
-    return({
-      type: "GET_BLOG_BY_ID",
-      payload: blogDetail
-    })
-  }
-}

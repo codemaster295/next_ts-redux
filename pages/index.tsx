@@ -16,6 +16,7 @@ import {
   userDataRedux,
 } from "../store/actions/actionsMain";
 import BlogList from "../components/BlogList";
+import "antd/dist/antd.css";
 // import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
@@ -37,7 +38,7 @@ const Home: NextPage = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <Banner data={props.data} />
+      <Banner />
       <BlogList />
       {/* <SearchBar /> */}
     </div>
@@ -45,14 +46,14 @@ const Home: NextPage = (props) => {
 };
 
 export default Home;
-export async function getServerSideProps() {
-  const blog = await client.query(
-    Prismic.Predicates.at("document.type", "blog")
-  );
+// export async function getServerSideProps() {
+//   const blog = await client.query(
+//     Prismic.Predicates.at("document.type", "blog")
+//   );
 
-  return {
-    props: {
-      data: blog?.results,
-    },
-  };
-}
+//   return {
+//     props: {
+//       data: blog?.results,
+//     },
+//   };
+// }

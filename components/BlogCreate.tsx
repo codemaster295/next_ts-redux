@@ -31,7 +31,7 @@ const BlogCreate: any = () => {
       let successData: any = await dispatch(
         CreateBlog({
           image: formData,
-          blogdata: { blogTitle, blogDescription },
+          blogdata: { title: blogTitle, description: blogDescription },
         })
       );
       toast.success(successData.payload.message, {
@@ -87,7 +87,7 @@ const BlogCreate: any = () => {
             placeholder="Enter The Title"
           />
         </div>
-        <ImgCrop rotate aspect={1 / 1}>
+        <ImgCrop rotate aspect={9 / 3}>
           <Upload
             multiple={false}
             customRequest={dummyRequest}
