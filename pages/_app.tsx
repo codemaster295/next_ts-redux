@@ -4,19 +4,23 @@ import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import type { AppProps } from "next/app";
 import { wrapper } from "../store/index";
-import React from "react";
+import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { loadUser } from "../store/actions/authActions";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
   return (
     <React.Fragment>
       <Component {...pageProps} />
-      <ToastContainer
-        style={{ zIndex: 100000 }}
-        // limit={1}
-      />
+      <ToastContainer style={{ zIndex: 100000 }} />
     </React.Fragment>
   );
 }

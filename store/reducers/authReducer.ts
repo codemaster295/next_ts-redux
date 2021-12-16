@@ -1,20 +1,63 @@
-const initState = {
-  userauthtoken: null,
+import {
+  USER_LOADED,
+  USER_LOADING,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT_SUCCESS,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+} from "../actions/types";
+let token = "";
+if (typeof window !== "undefined") {
+  // Perform localStorage action
+  token = localStorage.getItem("token");
+}
+const initialState = {
+  token: token,
+  isAuthenticated: null,
+  isLoading: false,
+  user: null,
 };
 
-const authReducer = (state = [], action: any) => {
-  
-  if (action.type === 'GET_AUTH_TOKEN') {
-  
-    return {
-      ...state,
-      userauthtoken: action.payload,
-    };
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case USER_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case USER_LOADED:
+      console.log(action.payload, "mmo");
+      return {
+        ...state,
+        isAuthenticated: true,
+        isLoading: false,
+        user: action.payload,
+      };
+    case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      console.log(action.payload, "mmo is here");
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        isLoading: false,
+      };
+    case AUTH_ERROR:
+    case LOGIN_FAIL:
+    case LOGOUT_SUCCESS:
+    case REGISTER_FAIL:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        user: null,
+        isAuthenticated: false,
+        isLoading: false,
+      };
+    default:
+      return state;
   }
-  else {
-    return state;
-  }
-};
-
-
-export default authReducer;
+}

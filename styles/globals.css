@@ -1,114 +1,49 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
-body{
-  font-family: 'Inter', sans-serif;
-  color:#2d3748 !important;
-  
+body {
+  font-family: "Inter", sans-serif;
+  color: #2d3748 !important;
+  scroll-behavior: smooth;
 }
-.banner{
+.banner {
   background-color: #f7f9fc;
 }
-.button{
-  background-color: rgb(25, 118, 210);
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  position: relative;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  outline: 0px;
-  border: 0px;
+
+.font_Inter {
+  font-family: "Inter", sans-serif;
+}
+
+.discover-dots-ul {
   margin: 0px;
-  cursor: pointer;
-  user-select: none;
-  vertical-align: middle;
-  appearance: none;
-  text-decoration: none;
-  font-family: Inter, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.75;
-  min-width: 64px;
-  padding: 8px 22px;
-  border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 118, 210);
-  box-shadow: rgb(140 152 164 / 10%) 0px 12px 15px;
-  text-transform: uppercase;
+  padding: 0px;
+  font-size: 0px;
 }
-.button:hover{
-    text-decoration: none;
-    background-color: rgb(13, 71, 161);
-    box-shadow: rgb(140 152 164 / 18%) 0px 10px 40px 10px;
+.discover-dots-ul li {
+  margin: 0px 4px !important;
+  height: auto !important;
 }
-.font_Inter{
-  font-family: 'Inter', sans-serif;
+.dots-discover {
+  width: 15px;
+  background-color: #ffffff;
+  height: 6px;
+  border-radius: 20px;
 }
-.RichEditor-root {
-  background: #fff;
-  border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
-  padding: 15px;
+.MuiSkeleton-text {
+  transform: none !important;
+}
+/* @media (aspect-ratio: 1/1){
+  .aspect-square {
+
+  }
+} */
+
+.slick-active .dots-discover {
+  background-color: black !important;
 }
 
-.RichEditor-editor {
-  border-top: 1px solid #ddd;
-  cursor: text;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.RichEditor-editor .public-DraftEditorPlaceholder-root,
-.RichEditor-editor .public-DraftEditor-content {
-  margin: 0 -15px -15px;
-  padding: 15px;
-}
-
-.RichEditor-editor .public-DraftEditor-content {
-  min-height: 100px;
-}
-
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-  display: none;
-}
-
-.RichEditor-editor .RichEditor-blockquote {
-  border-left: 5px solid #eee;
-  color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
-  font-style: italic;
-  margin: 16px 0;
-  padding: 10px 20px;
-}
-
-.RichEditor-editor .public-DraftStyleDefault-pre {
-  background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  font-size: 16px;
-  padding: 20px;
-}
-
-.RichEditor-controls {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 14px;
-  margin-bottom: 5px;
-  user-select: none;
-}
-
-.RichEditor-styleButton {
-  color: #999;
-  cursor: pointer;
-  margin-right: 16px;
-  padding: 2px 0;
-  display: inline-block;
-}
-
-.RichEditor-activeButton {
-  color: #5890ff;
+.slick-arrow {
+  display: none !important;
 }

@@ -1,77 +1,38 @@
 // import Slider from "@ant-design/react-slick";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import BlogComponent from "./BlogComponent";
+import BlogComponent from "./ProductComponent";
 import Content from "./Content";
 import Slider from "react-slick";
 import axios from "axios";
 import { Facebook } from "@mui/icons-material";
+import { Skeleton, Typography, Button } from "@mui/material";
+// import mmo  from '../public/img/iphonebanner.png'
 
 const Banner = (props) => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
-
-  const [bannerData, setBannerData] = useState([]);
-  useEffect(async () => {
-    const registrationData = await axios.get(
-      `${process.env.baseUrl}/api/v1/bannerproducts`
-    );
-    setBannerData(registrationData.data.data);
-  }, []);
-  console.log(bannerData);
   return (
-    <div className="banner w-full">
-      <div className="r mx-auto z-50  ">
-        <div className="w-full">
-          <div className="w-full">
-            <Slider {...settings}>
-              {bannerData.map((data) => (
-                <div className="relative h-full">
-                  <img src={data.image} alt="" />
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full">
-                    <div className="container mx-auto">
-                      <h1 className="font-bold text-4xl text-white">
-                        {data.title}
-                      </h1>
-                      <p className="font_Inter text-white font-semibold">
-                        {data.text}
-                      </p>
-                    </div>
+    <div className="banner w-full h-screen">
+      <div className="r mx-auto z-50  h-full">
+        <div className="w-full container mx-auto h-full  flex items-center">
+          <div className="flex items-center flex-wrap">
+            <div className="w-full lg:w-1/2 lg:order-0 order-1 ">
+              <div className="2xl:p-20 lg:p-5 p-2 space-y-3">
+                <h2 className="text-3xl md:text-5xl font-bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit</h2>
+                <div className="space-y-3">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicingelit.Dolore ad animi ex. Temporibus consequatur suscipit debitis,corrupti minima incidunt est.</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <div>
+                    <Button variant="contained" className="bg-black text-white hover:bg-white hover:text-black">
+                      Learn More
+                    </Button>
                   </div>
                 </div>
-              ))}
-            </Slider>
+              </div>
+            </div>
+            <div className="w-full lg:w-1/2 lg-order-1 order-0 lg:py-10 lg:pr-10">
+              <Skeleton variant="rectangular" width={"100%"} height={444} />
+            </div>
           </div>
-          {/* <div className="w-5/12 space-y-10">
-            <h1 className="font-bold text-4xl text-white-600">
-              What this NFT thing is all about
-            </h1>
-            <p className="font_Inter text-gray-500 font-semibold">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-              suscipit a quas earum iusto eos optio non distinctio ut facere vel
-              recusandae doloremque ducimus numquam laboriosam doloribus
-              voluptatibus ad deserunt, eaque animi, minima odit.
-            </p>
-            <button className="button text-white px-4 py-2 rounded-md shadow-2xl font-semibold">
-              know more
-            </button>
-          </div> */}
-          {/* <div className="block">
-            <Slider {...settings}>
-              <Image
-                height={500}
-                width={500}
-                src="https://storage.googleapis.com/download/storage/v1/b/facebookreact-d5338.appspot.com/o/blogmmo%2F1638866417050.png?generation=1638866417303495&alt=media"
-                alt=""
-              />
-            </Slider>
-          </div> */}
         </div>
       </div>
     </div>

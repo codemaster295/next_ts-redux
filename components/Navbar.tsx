@@ -1,92 +1,97 @@
-import { AccountCircle, Search, ShoppingCart } from "@mui/icons-material";
+import { AccountCircle, Logout, Search, ShoppingCart } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, Button, Menu, MenuItem, IconButton } from "@mui/material";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserAuthToken } from "../store/actions/actionsMain";
-import { Button, Popconfirm, Select as AntdSelect } from "antd";
+// import { getUserAuthToken } from "../store/actions/actionsMain";
+import { Popconfirm, Select as AntdSelect } from "antd";
+import { logout } from "../store/actions/authActions";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  useEffect(async () => {
-    let token = await dispatch(getUserAuthToken([]));
-  }, []);
-  const userDataRedux: any = useSelector((state: any) => state.authReducer);
-  let { userauthtoken } = userDataRedux;
+  const state = useSelector((state: any) => state);
+  const userDataRedux: any = useSelector((state: any) => state);
+  console.log(userDataRedux, "mmousgere");
+  // let { userauthtoken } = userDataRedux;
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-between p-4 items-center">
-        <span className="text-3xl font-bold w-2/12">
-          <Link href="/">Sample</Link>
-        </span>
-        {/* <div className="relative w-8/12 flex items-center justify-end ">
-          <input
-            className="bg-gray-200 outline-none w-full py-3 px-2"
-            type="text"
-            name="searchproduct"
-            id="searchproduct"
-          />
-          <Search className="absolute mr-4 cursor-pointer" />
-        </div> */}
-        <AntdSelect
-          showSearch
-          style={{ width: "100%" }}
-          placeholder="Search product"
-          optionFilterProp="children"
-          // onChange={(e, target) => {
-          //   setSelectedMinter({
-          //     minterID: target.key,
-          //     roomName: target.name,
-          //     docID: target.value,
-          //     isActive: target.label,
-          //   })
-          //   setActiveButton(target.label)
-          // }}
-        >
-          {/* {Object.values(roomdata).map((item, index) => (
-            <Option
-              value={item.docID}
-              key={item.data.RoomID + index}
-              name={item.data.RoomName}
-              label={item.data.isActive}
-            >
-              {item.data.RoomName}
-            </Option>
-          ))} */}
-        </AntdSelect>
-        {!userauthtoken ? (
-          <ul className="flex items-center space-x-10 w-4/12  ">
-            <li className="text-black">
-              <Link href="/login">Login</Link>
-            </li>
-            <li className="text-black">
-              <Link href="/register">Signup</Link>
-            </li>
-          </ul>
-        ) : (
-          <ul className="w-2/12 flex space-x-10 justify-end items-center mb-0">
-            <li className="text-black">
-              <Link href="/createblog">
-                {/* <button className="button text-white px-4 py-2 rounded-md shadow-2xl font-semibold"> */}
-                <Badge badgeContent={4} color="primary">
-                  <ShoppingCart className="text-blue-500" />
-                </Badge>
-                {/* </button> */}
-              </Link>
-            </li>
-            <AccountCircle
-              className="text-gray-300 cursor-pointer transform scale-100 hover:scale-105 transition-all duration-100 ease"
-              style={{ fontSize: 45 }}
-              // onClick={() => {
-              //   setProfileMenu(!profilemenu);
-              //   setOpen(!open);
-              // }}
-            />
-          </ul>
-        )}
+    <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full bg-white z-50 bg-opacity-70">
+      <div className="container mx-auto ">
+        <div className="flex justify-between p-4 items-center">
+          <span className="text-3xl font-bold w-2/12">
+            <Link href="/">Sample</Link>
+          </span>
+          {state.auth.isAuthenticated ? (
+            ""
+          ) : (
+            <ul className="flex items-center space-x-10   m-0 ">
+              <li className="text-black">
+                <Link href="/login">Login</Link>
+              </li>
+              <li className="text-black">
+                <Button className="text-white" variant="contained">
+                  <Link href="/register">Signup</Link>
+                </Button>
+              </li>
+            </ul>
+          )}
+          {state.auth.isAuthenticated ? (
+            <ul className="w-2/12 flex space-x-10 justify-end items-center mb-0">
+              <li className="text-black">
+                <Link href="/createblog">
+                  <Badge badgeContent={userDataRedux.cart.length !== 0 ? userDataRedux.cart.length : ""} className="text-black">
+                    <ShoppingCart className="text-black" />
+                  </Badge>
+                </Link>
+              </li>
+              <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
+                <AccountCircle className="text-gray-300 cursor-pointer transform scale-100 hover:scale-105 transition-all duration-100 ease" />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    dispatch(logout());
+                  }}
+                >
+                  Logout
+                </MenuItem>
+              </Menu>
+              {/* </div> */}
+              {/* </ul> */}
+            </ul>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );
