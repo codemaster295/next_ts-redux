@@ -10,12 +10,14 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "../store/actions/authActions";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Products } from "../store/actions/productActions";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadUser());
+    dispatch(Products())
   }, []);
   return (
     <React.Fragment>

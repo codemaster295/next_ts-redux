@@ -15,7 +15,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      let data: registerUserTypes = {
+      let data: any = {
         email: email,
         password: password,
         username: userName,

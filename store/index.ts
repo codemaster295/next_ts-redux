@@ -9,6 +9,7 @@ import tokenReducer from "./reducers/tokenReducer";
 import isUserLoggedIn from "./reducers/isUserLoggedIn";
 import errorReducer from "./reducers/errorReducer";
 import cartReducer from "./reducers/cartReducer";
+import productReducer from "./reducers/productReducer";
 
 const rootReducer = combineReducers({
   // auth: authReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   error: errorReducer,
   auth: authReducer,
   cart: cartReducer,
+  product:productReducer
 });
 
 const initStore = (initialState = null) => {

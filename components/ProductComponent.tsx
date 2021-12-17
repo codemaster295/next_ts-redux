@@ -11,7 +11,7 @@ const ProductComponent = ({ data }) => {
   const dispatch = useDispatch();
   const state = useSelector((state: any) => state.cart);
   const userData = useSelector((state: any) => state.auth);
-
+  console.log(data.Name, "this is data")
   const added = state.filter((x) => {
     return x.id === data.id;
   });
@@ -93,14 +93,16 @@ const ProductComponent = ({ data }) => {
     <div className="space-y-5 shadow-2xl">
       {/* <Image className="object-cover" src={data.image ? data.image : "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"} width={270} height={270} /> */}
       <Slider {...settings}>
-        <div className="p-3 ">{data.image ? <Image className="object-contain" src={data.image} width={270} height={270} /> : <Skeleton variant="rectangular" width={"100%"} height={270} />}</div>
-        <div className="p-3 ">{data.image ? <Image className="object-contain" src={data.image} width={270} height={270} /> : <Skeleton variant="rectangular" width={"100%"} height={270} />}</div>
+        {data.Images.map((image) => (
+
+          <div className="p-3 ">{image ? <Image className="object-contain" src={image} width={270} height={270} onClick={() => { router.push(`/product/${data._id}`) }} /> : <Skeleton variant="rectangular" width={"100%"} height={270} />}</div>
+        ))}
       </Slider>
 
       <div className="p-3 space-y-2">
-        {data.title ? <h1 className="text-xl">{data && data.title ? data.title.slice(0, 10) + "..." : data.title}</h1> : <Skeleton variant="text" />}
-        {data.price ? <h6 className="text-xs">{data.price + "$"}</h6> : <Skeleton variant="text" />}
-        {data.price ? (
+        {data.Name ? <h1 className="text-xl">{data.Name}</h1> : <Skeleton variant="text" />}
+        {data.Price ? <h6 className="text-xs">{data.Price + "INR"}</h6> : <Skeleton variant="text" />}
+        {data.Price ? (
           <Button variant="contained" className="bg-black text-white hover:bg-white hover:text-black" onClick={cartHandler}>
             {added.length !== 0 ? "Remove from cart" : "Add to cart"}
           </Button>

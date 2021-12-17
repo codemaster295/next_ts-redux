@@ -14,3 +14,4 @@ export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
+export const GET_ALL_PRODUCTS= "GET_ALL_PRODUCTS"

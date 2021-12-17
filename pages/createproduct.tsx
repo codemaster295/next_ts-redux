@@ -32,14 +32,14 @@ const createproduct = () => {
       //     blogdata: { title: blogTitle, description: blogDescription },
       //   })
       // );
-      toast.success(successData.payload.message, {
-        position: "bottom-left",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      // toast.success(successData.payload.message, {
+      //   position: "bottom-left",
+      //   autoClose: 10000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      // });
     }
   };
   const onPreview = async (file) => {
@@ -73,7 +73,7 @@ const createproduct = () => {
             <input
               className="w-full banner py-3 px-2 rounded-sm outline-none text-gray-700 font-semibold tracking-wide"
               onChange={(e) => {
-                setBlogTitle(e.target.value);
+                // setBlogTitle(e.target.value);
               }}
               type="text"
               placeholder="Enter The Title"
@@ -90,7 +90,7 @@ const createproduct = () => {
             <textarea
               className="w-full banner py-3 px-2 rounded-sm outline-none text-gray-700 font-semibold tracking-wide"
               onChange={(e) => {
-                setBlogDescription(e.target.value);
+                // setBlogDescription(e.target.value);
               }}
               placeholder="Description"
             ></textarea>
