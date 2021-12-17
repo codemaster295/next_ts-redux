@@ -81,7 +81,7 @@ const BlogCreate: any = () => {
           Features, WaterResistant, CountryOrigin, ManufacturedBy, ImportedBy, PackedBy
         }
       }
-      let productData = await axios.post("http://localhost:5050/api/v1/add/product", formProductData, {
+      let productData = await axios.post("https://blogmmo.herokuapp.com/api/v1/product/add", formProductData, {
         headers: {
           "x-auth-token": localStorage.getItem('token')
         }
