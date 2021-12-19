@@ -8,7 +8,7 @@ export default (state = [], action) => {
     // ...action.payload,
     case REMOVE_CART:
       return state.filter((x) => {
-        return x.id !== action.payload.id;
+        return x._id !== action.payload._id;
       });
     default:
       return state;

@@ -11,26 +11,28 @@ import { Skeleton, Typography, Button } from "@mui/material";
 
 const Banner = (props) => {
   return (
-    <div className="banner w-full h-screen">
-      <div className="r mx-auto z-50  h-full">
-        <div className="w-full container mx-auto h-full  flex items-center">
-          <div className="flex items-center flex-wrap">
-            <div className="w-full lg:w-1/2 lg:order-0 order-1 ">
-              <div className="2xl:p-20 lg:p-5 p-2 space-y-3">
-                <h2 className="text-3xl md:text-5xl font-bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit</h2>
+    <div className="banner w-full h-screen overflow-hidden">
+      <div className="r mx-auto h-full">
+        <div className="container mx-auto h-full  flex items-center">
+          <div className="flex items-center flex-wrap w-full">
+            <div className="w-full lg:w-1/2 ">
+              <div className="2xl:p-20 lg:p-5 p-2 space-y-3 text-center text-white">
+                <h2 className="text-3xl md:text-5xl font-bold">Welcomme to Paradise</h2>
                 <div className="space-y-3">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicingelit.Dolore ad animi ex. Temporibus consequatur suscipit debitis,corrupti minima incidunt est.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <i>Everyone looks at your watch and it represents who you are, your values and your personal style.</i>
+                  <strong className="block">– Kobe Bryant</strong>
                   <div>
-                    <Button variant="contained" className="bg-black text-white hover:bg-white hover:text-black">
+                    <button  className="bg-transparent text-white hover:bg-white hover:text-black shadow-none hover:shadow-none border-white border transition-all duration-250 px-4 py-2">
                       Learn More
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-1/2 lg-order-1 order-0 lg:py-10 lg:pr-10">
-              <Skeleton variant="rectangular" width={"100%"} height={444} />
+            <div className="w-full lg:w-1/2  lg:py-10 lg:pr-10 ">
+              <div className="bg-white flex items-center  rounded-xl w-8/12 mx-auto  ">
+                <img  className=" rounded-xl" src="https://storage.googleapis.com/download/storage/v1/b/facebookreact-d5338.appspot.com/o/blogmmo%2F1639742693409.png?generation=1639742694522992&alt=media" />
+              </div>
             </div>
           </div>
         </div>

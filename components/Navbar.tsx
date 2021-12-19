@@ -28,12 +28,18 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [scroll, setScroll] = React.useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 50);
+    });
+  })
   return (
-    <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full bg-white z-50 bg-opacity-70">
+    <div className="fixed transitio-all ease-linear duration-200 top-0 left-1/2 transform -translate-x-1/2 w-full  z-50 text-black bg-white">
       <div className="container mx-auto ">
         <div className="flex justify-between p-4 items-center">
-          <span className="text-3xl font-bold w-2/12">
-            <Link href="/">Sample</Link>
+          <span className="text-3xl font-bold w-2/12 ">
+            <Link href="/">Paradise</Link>
           </span>
           {state.auth.isAuthenticated ? (
             ""
@@ -43,7 +49,7 @@ const Navbar = () => {
                 <Link href="/login">Login</Link>
               </li>
               <li className="text-black">
-                <Button className="text-white" variant="contained">
+                <Button className="" variant="contained">
                   <Link href="/register">Signup</Link>
                 </Button>
               </li>
@@ -51,10 +57,10 @@ const Navbar = () => {
           )}
           {state.auth.isAuthenticated ? (
             <ul className="w-2/12 flex space-x-10 justify-end items-center mb-0">
-              <li className="text-black">
+              <li className="">
                 <Link href="/createblog">
-                  <Badge badgeContent={userDataRedux.cart.length !== 0 ? userDataRedux.cart.length : ""} className="text-black">
-                    <ShoppingCart className="text-black" />
+                  <Badge badgeContent={userDataRedux.cart.length !== 0 ? userDataRedux.cart.length : ""} className="">
+                    <ShoppingCart className="" />
                   </Badge>
                 </Link>
               </li>

@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
 body {
@@ -9,7 +9,7 @@ body {
   scroll-behavior: smooth;
 }
 .banner {
-  background-color: #f7f9fc;
+  background-color: #ff9700;;
 }
 
 .font_Inter {

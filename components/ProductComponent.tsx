@@ -13,7 +13,7 @@ const ProductComponent = ({ data }) => {
   const userData = useSelector((state: any) => state.auth);
   console.log(data.Name, "this is data")
   const added = state.filter((x) => {
-    return x.id === data.id;
+    return x._id === data._id;
   });
   console.log(added, "mmo");
   const router = useRouter();
@@ -90,7 +90,7 @@ const ProductComponent = ({ data }) => {
     }
   };
   return (
-    <div className="space-y-5 shadow-2xl">
+    <div className="space-y-5  ">
       {/* <Image className="object-cover" src={data.image ? data.image : "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"} width={270} height={270} /> */}
       <Slider {...settings}>
         {data.Images.map((image) => (

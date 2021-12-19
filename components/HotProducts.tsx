@@ -18,7 +18,7 @@ const HotProducts = (props) => {
     <div className="mt-20">
       <div className="container mx-auto bg-white space-y-3">
         <h1 className="text-3xl font-bold">Hot Products</h1>
-        <div className="grid grid-cols-5 gap-10">{ProductData && ProductData.map((data) => <ProductComponent data={data} />)}</div>
+        <div className="flex items-center flex-wrap">{ProductData && ProductData.map((data) => <ProductComponent data={data} />)}</div>
         <div className="text-right text-black font-semibold">
           <Link href={"/products"}> View More</Link>
         </div>

@@ -17,7 +17,7 @@ export const Products =
    
 
     axios
-      .get(`${process.env.baseUrl}/product/getproducts/all`, config)
+      .get(`${process.env.baseUrl}/getproducts/all`, config)
       .then((res) =>
         dispatch({
           type: GET_ALL_PRODUCTS,
